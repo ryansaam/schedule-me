@@ -1,0 +1,110 @@
+.form {
+  display: none;
+  background: rgb(0, 0, 0, 0.4);
+  position: fixed;
+  z-index: 1;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+.content-wrapper {
+  width: 300px;
+  place-self: center;
+}
+.ion-android-cancel {
+  position: relative;
+  font-size: 40px;
+  color: white;
+  right: 170px;
+}
+.form-header {
+  background: black;
+  color: #fff;
+  padding: 5px;
+  z-index: 2;
+}
+.form-header h3, h4 {
+  margin: 0px;
+  margin-block-end: 5px;
+}
+.form-fields {
+  background:#fff;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  padding: 10px;
+  z-index: 2;
+  color: #000;
+}
+.form-fields label {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  width: 200px;
+  padding-top: 10px;
+}
+.form-fields label input {
+  height: 40px;
+  width: 100%;
+  border: 2px solid #cbcbff;
+  border-radius: 10px;
+  padding-left: 10px;
+  outline: none;
+  box-sizing: border-box;
+  font-size: 18px;
+}
+.form-fields label textarea {
+  height: 120px;
+  width: 100%;
+  padding: 10px;
+  font-size: 18px;  
+  font-family: sans-serif;
+  border: 2px solid #cbcbff;
+  border-radius: 5px;
+  outline: none;
+  box-sizing: border-box;
+  resize: none;
+}
+.form-fields label input:focus {
+  border-color: #000;
+}
+.form-fields label textarea:focus {
+    border-color: #000;
+  }
+.form-fields label p {
+  justify-self: start;
+}
+.btn {
+  background: #000;
+  color: #fff;
+  height: 40px;
+  width: 100px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 50px;
+  font-size: 18px;
+  font-family: 'Fjalla One', sans-serif;
+  box-shadow: 1px 1px 4px 2px #c1c1c1;
+  outline: none;
+}
+
+@media (max-width: 368px) {
+  .book {
+    padding: 10px;
+  }
+}
+@media (min-width: 560px) {
+  .contact-form {
+    width: 420px;
+  }
+  .form-fields label {
+    width: 280px;
+  }
+}
+@media (min-width: 940px) {
+  .book {
+    padding: 40px;
+  }
+}
