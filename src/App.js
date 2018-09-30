@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import ScheduleMe from './components/colorful-calendar/ScheduleMe.js'
-import colorTheme from './components/colorful-calendar/calendar.colors.js'
-import './components/colorful-calendar/Calendar.css'
-import './components/colorful-calendar/mediaqueries.css'
+import ScheduleMe from './components/schedule-me/ScheduleMe.js'
+import colorTheme from './components/schedule-me/calendar.colors.js'
 
 class App extends Component {
   render() {

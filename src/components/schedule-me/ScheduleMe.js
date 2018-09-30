@@ -8,6 +8,9 @@ import WeekDayNodes from './components/WeekDayNodes.js'
 import Form from './components/Form.js'
 import Warning from './components/Warning.js'
 
+import './ScheduleMe.css'
+import './mediaqueries.css'
+
 const monthNames = ["Jan ", "Feb ", "Mar ", "Apr ", "May ", "Jun ", "Jul ", "Aug ", "Sept ", "Oct ", "Nov ", "Dec "]
 const weekDayNames = ["Sunday ", "Monday ", "Tuesday ", "Wednesday ", "Thursday ", "Friday ", "Saturday "]
 
@@ -110,17 +113,16 @@ class ScheduleMe extends Component {
   }
 
   handleDate(e) {
-    disableScroll.on()
     const { monthOffset, yearOffset } = this.state
-    console.log(e.currentTarget.getAttribute("value"))
+    const { date } = this.props
     let value = e.currentTarget.getAttribute("value")
     let key = e.currentTarget.getAttribute("keyvalue")
 
     if (key.match("leadDate")) {
-      if ((monthOffset === 0 ? 11 : monthOffset - 1) < this.props.date.getMonth()) {
+      if ((monthOffset === 0 ? 11 : monthOffset - 1) < date.getMonth()) {
         this.setState({ warningMsg: "You can't schedule on a date in the past silly", warningDisplay: true })
       } else {
-        console.log("working")
+        disableScroll.on()
         let weekDayIndex = new Date(
           yearOffset, 
           (monthOffset === 0 ? 11 : monthOffset - 1),
@@ -135,7 +137,8 @@ class ScheduleMe extends Component {
         }))
       }
     } else if (key.match("postDate")) {
-      if (monthOffset + 1 > this.props.date.getMonth() + 2) return this.setState({ warningMsg: "Sorry we don't schedule appointments past two months ahead", warningDisplay: true })
+      if (monthOffset + 1 > date.getMonth() + 2) return this.setState({ warningMsg: "Sorry we don't schedule appointments past two months ahead", warningDisplay: true })
+      disableScroll.on()
       let weekDayIndex = new Date(
         yearOffset, 
         (monthOffset === 11 ? 0 : monthOffset + 1),
@@ -148,12 +151,9 @@ class ScheduleMe extends Component {
         weekDayName: weekDayName, 
         monthName: monthNames[(monthOffset === 11 ? 0 : monthOffset + 1)]
       }))
-      console.log("working")
-      console.log(key)
     } else {
-      console.log(this.props.date.getDate(), "current date")
-      if (value < this.props.date.getDate()) return this.setState({ warningMsg: "You can't schedule on a date in the past silly", warningDisplay: true })
-      console.log(key)
+      if (value < date.getDate() && monthOffset === date.getMonth()) return this.setState({ warningMsg: "You can't schedule on a date in the past silly", warningDisplay: true })
+      disableScroll.on()
       let weekDayIndex = new Date(yearOffset, monthOffset, value)
       let weekDayName = weekDayNames[weekDayIndex.getDay()]
       this.setState(state => ({
