@@ -29,6 +29,8 @@
   margin: auto;
   overflow: hidden;
   border-radius: 0px 0px 50px 50px;
+  mask-image: radial-gradient(white, black);
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
   display: grid;
   align-items: center;
   justify-items: center;
